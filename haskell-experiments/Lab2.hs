@@ -1,5 +1,5 @@
 module Lab2 where
-import Prelude ( Eq , Fractional , (/), Ord, (<=))
+import Prelude ( Eq , Fractional , (/), Ord, (<=), (==))
 import Bool
 import Functions
 import List
