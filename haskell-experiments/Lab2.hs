@@ -1,5 +1,5 @@
 module Lab2 where
-import Prelude ( Eq , Fractional , (/), Ord, (<=), (==), Int)
+import Prelude ( Eq, Fractional , (/), Ord, (<=), (==), Int, Bool)
 import Bool
 import Functions
 import List
@@ -28,8 +28,11 @@ safeDiv _ 0 = Nothing
 safeDiv x d = Just (x/d)
 ----------------------------------------------------
 --Questão 05
-find :: (a -> Bool) -> [a] -> Maybe a
-find 
+my_find :: (a -> Bool) -> [a] -> Maybe a
+my_find x = safeHead . dropWhile (not . x)
+
+--my_find x [] = Nothing
+
 ----------------------------------------------------
 
 
