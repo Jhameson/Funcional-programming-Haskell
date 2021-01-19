@@ -10,8 +10,8 @@ import Bool (cond)
 -------------------------------------------------------------------------
 -- ##### QUESTÃO 01 #####
 -- função length
-length :: [a] -> Int
-length = foldl f 0 where f acc _ = acc +1
+my_length :: [a] -> Int
+my_length = foldl f 0 where f acc _ = acc +1
 
 -- função (++)
 (++) :: [a]->[a]->[a]
@@ -40,7 +40,7 @@ squares (x:xs) = x*x : squares xs
 -- ##### QUESTÃO 03 #####
 count :: Eq a => a -> [a] -> Int
 count x [ ] = 0
-count x ys = length ( filter ( x == ) ys )
+count x ys = my_length ( filter ( x == ) ys )
 
 
 

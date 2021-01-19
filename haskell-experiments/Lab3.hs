@@ -1,11 +1,10 @@
 module Lab3 where
-import Prelude ( Ord , ( <=) , Eq , (==) , Bool ( True , False ), (<=))
+import Prelude ( Ord , ( <=) , Eq , (==) , (>), Bool ( True , False ), (<=))
 import Bool
 import Functions
 import List
-import Lab2
 
-
+import Lab1
 
 --Questão 01
 group :: Eq a => [a] -> [[a]]
@@ -33,20 +32,24 @@ merge (x:xs) (y:ys) = if (x <= y) then x : merge xs (y:ys) else y : merge (x:xs)
 
 -- Questão 5
 my_split :: [a] -> ([a], [a])
-my_split (x:xs) = x : my_split (drop 1 xs)
+my_split [] = ([],[])
+my_split [a] = ([a],[])
+my_split (x:xs:xss) = (x:d,xs:j) where (d,j) = my_split xss
+--(x: my_split xss) xs:  
+--my_split (x:xs) = x : my_split (drop 1 xs)  
 
+--['1','2',3,4]
 
---all ::  (a -> Bool) -> [a] -> Bool
---any :: (a -> Bool) -> [a] -> Bool
--- Questão 4
--- Questão 5
--- Questão 6
-
+-- questão 06
+--mergesort :: Ord a => [a] -> [a]
+--mergesort xs = if (t>2) then merge m n else xs where t = my_length xs (a,b) = my_split xs m = mergesort a n = mergesort b	
 -- exercicio 09
---my_and :: Bool -> Bool -> Bool
---my_and a b = foldr and a b
+my_and :: [Bool] -> Bool
+my_and a = foldr (==) True a
+
+my_or :: [Bool] -> Bool
+my_or a = foldr (==) False a
 
 --m_map :: (a -> b) -> [a] -> [b]
---m_map _ [] = []
---m_map f xs =  foldr f xs
+--m_map f xs =  foldr (f) xs
 
