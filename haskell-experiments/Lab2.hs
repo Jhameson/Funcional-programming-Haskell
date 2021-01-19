@@ -55,7 +55,7 @@ replicate x y = take x (my_repeat y)
 -- inits
 my_inits :: [a] -> [[a]]
 my_inits [] = [[]]
-my_inits (x:xs) = [] : map (x:) (inits xs)
+my_inits (x:xs) = [] : map (x:) (my_inits xs)
 
 -- tails
 my_tails :: [a] -> [[a]]
