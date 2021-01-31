@@ -1,5 +1,5 @@
 module Main where
-import Prelude (String, Eq, (==), (/=), Int, (+), Char, IO, readFile, putStrLn, show,( >>=), pure, undefined)
+import Prelude (String, Eq((==) ,(/=)), Int, Num((+)), Char, IO, readFile, putStrLn, Show(show), Monad( >>=), pure, undefined)
 import Bool
 import Functions 
 import List
