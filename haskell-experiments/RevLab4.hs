@@ -1,6 +1,6 @@
 module Main where
 
-import Prelude (Show(show), Char, Int, Eq((==), (/=)), Monad((>>=)), Num((+)), (++), IO, readFile, putStrLn, Applicative(pure))
+import Prelude (Char, Int, Eq((==), (/=)), Num((+)), (++), IO, readFile, putStrLn, Applicative(pure), (>>=), Show(show))
 
 ------------------------------
 import Maybe
@@ -37,7 +37,7 @@ count' = foldl f BST.empty where
  
 process' :: [Char] -> [Char]
 process' = makeOutput . countWords . clean where
- clean = remove' '.' . remove' '!' . remove' '?' . remove' '(' . remove' ')' . remove' ','
+ clean = remove' '.' . remove' '!' . remove' '?' . remove' '(' . remove' ')' . remove' ',' 
  countWords = count' . concat . map words' . lines'
  makeOutput = concat . intercalate "\n" . map f . BST.inOrder
  f (word, count') = word ++ ": " ++ show count'

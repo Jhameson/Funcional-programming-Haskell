@@ -47,11 +47,11 @@ my_split (x:xs:xss) = (x:d,xs:j) where (d,j) = my_split xss
 mergesort :: Ord a => [a] -> [a]
 mergesort [] = []
 mergesort xs = if (t<2) then xs else merge m n 
-	where 
-		t = my_length xs 
-		(a,b) = my_split xs 
-		m = mergesort a 
-		n = mergesort b
+ where 
+  t = my_length xs 
+  (a,b) = my_split xs 
+  m = mergesort a 
+  n = mergesort b
 
 -- exercicio 09
 my_and :: [Bool] -> Bool
