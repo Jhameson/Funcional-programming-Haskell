@@ -57,3 +57,4 @@ instance Alternative Maybe where
 instance Monad Maybe where
     Nothing >>= _ = Nothing
     (Just x) >>= f = f x
+

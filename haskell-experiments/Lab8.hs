@@ -1,13 +1,34 @@
 module Main where
 
-import Prelude (Bool(False, True), Ord, Char, undefined,IO, (<), (<=),print, putStrLn, readFile, writeFile, getContents,(>>=))
+import Prelude (Show, show, Eq,(==),Bool(False, True), 
+	Ord, Char, undefined,IO, (<), (<=),print, putStrLn, 
+	readFile, writeFile, getContents,(>>=))
 
 import System.Environment(getArgs)
-
-import Maybe
+import System.IO
+import Maybe 
 import Functions 
 import List (intercalate, concat, lines, head, length, concat)
 
+
+---------------------------------------------------------
+-- EXERCÍCIO 19
+instance Eq a => Eq (Maybe a) where
+  Nothing == Nothing = True
+  Nothing == _ = False
+  Just _ == Nothing = False
+  Just x == Just y = x == y
+-- EXERCÍCIO 21
+
+instance Ord a => Ord (Maybe a) where
+    Nothing <= _ = True
+    Just _ <= Nothing = False
+    Just x <= Just y = x <= y
+
+-- EXERCÍCIO 22
+instance Show a => Show (Maybe a) where
+  show Nothing = "Nothing"
+  show (Just x) = "Just " ++ show x
 ---------------------------------------------------------
 my_split :: [a] -> ([a], [a])
 my_split [] = ([],[])
@@ -37,24 +58,22 @@ program2 = getArgs >>= readFile . head  >>=  putStrLn
 program3 :: IO ()
 program3 = getArgs >>= readFile . head >>=  putStrLn . concat . intercalate "\n" . mergesort . lines
 
--- A MODIFICAÇÃO ESTÁ NO ARQUIVO Lab4.hs (última linha)
 
+
+-- A MODIFICAÇÃO ESTÁ NO ARQUIVO Lab4.hs (última linha)
 program4 :: IO ()
 program4 = getArgs >>= treatArgs where
 treatArgs [ from , to ] = readFile from >>= writeFile to
 treatArgs _ = putStrLn "You must pass exactly two arguments."
 
-program5 :: IO()
-program5 = getArgs >>= readFile . head  >>=  putStrLn
+program5 :: IO ()
+program5 = getArgs >>= treatArgs where
+  treatArgs [first] = readFile first >>= putStrLn
+  treatArgs _ = getContents >>= putStrLn
 
 program6 :: IO()
 program6 = getArgs >>= readFile . head  >>=  putStrLn
 
 ------------------------------------------------------------
-
-instance' Ord a => Ord (Maybe a) where
- Nothing <= _ = True
- Just _ <= Nothing = False
- Just x <= Just y = x <= y
 
 main = program5
