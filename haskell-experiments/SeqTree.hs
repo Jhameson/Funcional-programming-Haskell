@@ -1,4 +1,4 @@
-module SeqTree (SeqTree, empty, insert, update, lookup, remove, map) where
+module SeqTree (SeqTree, empty, insert, update, lookup, remove, map') where
 
 import Prelude (Int, (+), (-), (^),
                 Ord, (<), (<=), max, Show)
@@ -91,12 +91,12 @@ remove (Leaf _) = Empty
 remove (Branch _ _ ltree Empty) = remove ltree
 remove (Branch _ _ ltree rtree) = makeBranch ltree (remove rtree)
 
-map :: (a -> b) -> SeqTree a -> SeqTree b
-map _ Empty = Empty
-map f (Leaf x) = Leaf (f x)
-map f (Branch _ _ ltree rtree) = makeBranch ltree' rtree' where
-    ltree' = map f ltree
-    rtree' = map f rtree
+map' :: (a -> b) -> SeqTree a -> SeqTree b
+map' _ Empty = Empty
+map' f (Leaf x) = Leaf (f x)
+map' f (Branch _ _ ltree rtree) = makeBranch ltree' rtree' where
+    ltree' = map' f ltree
+    rtree' = map' f rtree
 
 empty :: SeqTree a
 empty = Empty
