@@ -1,14 +1,16 @@
-module Main where
+module Lab10 where
 
-import Prelude (Ord, (<=), (>=), (-), Bool, IO, putStrLn, (<$>), pure, (<*>), undefined)
+import Prelude (Ord, (<=), (>=), (>) ,(-), Bool, IO, putStrLn, (<$>), 
+ pure, (<*>), undefined, max, foldr)
 import Bool
 import Functions
-import List
+import List (head, tail)
 import Maybe
+
 
 maximum :: Ord a => [a] -> Maybe a
 maximum [] = Nothing
-maximum a = undefined 
+maximum xs = Just (foldr max (head xs) (tail xs))
 
-main :: IO()
-main = undefined
+maximalBy :: (a -> a -> Bool) -> [a] -> a
+maximalBy f xs = foldr f xs
